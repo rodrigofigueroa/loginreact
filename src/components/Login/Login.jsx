@@ -1,12 +1,12 @@
 import React, { 
   useState 
-}                 from 'react';
-import PropTypes  from 'prop-types'
-import loginUser   from '../../services/service'
+}                   from 'react';
+import PropTypes    from 'prop-types'
+import loginUser    from '../../services/service'
 import './Login.css'
 
 const Login = ({ setToken }) => {
-  const [ username, setuserName ] = useState( null )
+  const [ username, setUserName ] = useState( null )
   const [ password, setPassword ] = useState( null )
 
   const handleSubmit = async e => {
@@ -27,7 +27,7 @@ const Login = ({ setToken }) => {
             type="text" 
             id="user_id" 
             name="user_id" 
-            onChange={ e => setuserName( e.target.value ) } 
+            onChange={ e => setUserName( e.target.value ) } 
           />
         </label>
         <label htmlFor="password">

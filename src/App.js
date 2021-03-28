@@ -1,27 +1,18 @@
-import React, { useState }  from 'react';
+import React              from 'react';
 import {
   BrowserRouter,
   Route,
   Switch
 } from 'react-router-dom'
-import Dashboard            from './components/Dashboard/Dashboard.jsx'
-import Preferences          from './components/Preferences/Preferences'
-import Login                from './components/Login/Login'
+import Dashboard          from './components/Dashboard/Dashboard.jsx'
+import Preferences        from './components/Preferences/Preferences'
+import Login              from './components/Login/Login'
+import { useToken }       from './components/App/useToken.jsx'
 import './App.css'
 
-function setToken( userToken ){
-  sessionStorage.setItem( 'token', JSON.stringify( userToken ) )
-}
-
-function getToken(){
-  const tokenString = sessionStorage.getItem( 'token' )
-  const parseToken  = JSON.parse( tokenString )
-  return parseToken?.token
-}
-
 function App() {
-  const token = getToken()
-
+  const { token, setToken } = useToken()
+    
   if( !token ) return <Login setToken={ data => setToken( data ) } />
 
   return (
